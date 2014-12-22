@@ -1,0 +1,63 @@
+package com.array.selection.sort;
+
+public class RunSort {
+	static int minIndexA;
+	static int arraySorted;
+	static int r;
+	
+	public static void main(String[] args) {
+
+		Algorithm algorithm = new Algorithm();//объект с решениями
+		//TODO getArray //формирование массива из 10ти неповторяющихся элементов
+		
+		int arrayNotSorted[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+		//int index = 0;//указатель в массиве
+		
+		algorithm.showArray(arrayNotSorted);//вывод массива в консоль
+		System.out.println();
+		
+		minIndexA = arrayNotSorted[0];
+		
+		for(int i = 0; i < arrayNotSorted.length; i++) {
+			minIndexA = algorithm.searchMin(i, arrayNotSorted);//поиск инд мин значения	
+			
+			r = arrayNotSorted[i]; //замена элементов
+			arrayNotSorted[i] = arrayNotSorted[minIndexA];
+			arrayNotSorted[minIndexA] = r;
+			
+			algorithm.showArray(arrayNotSorted);
+			System.out.println("r: " + r + " i: " + arrayNotSorted[i] + " min: " + arrayNotSorted[minIndexA]);
+									
+			//System.out.println(minIndexArray);
+			//algorithm.showArray(arraySorted);
+		}
+			
+	}
+}
+///////////////////////////////////////////
+
+public class Algorithm {
+	int minElement;
+	public int minIndex;
+	int j = 0;
+
+	public void showArray(int arr[]) {// вывод массива в консоль
+		for (int p = 0; p < arr.length; p++) {
+		System.out.print(arr[p] + " ");
+		}
+		//System.out.println();
+	}
+
+	public int searchMin(int indexToStart, int arr[]) {// поиск индекса минимального элемента массива
+		minElement = arr[minIndex];
+		for (j = indexToStart; j < arr.length; j++) {
+			if (minElement > arr[j]) {
+				minElement = arr[j];
+				minIndex = j;
+			}
+		}
+		return minIndex;
+	}
+
+}
+
